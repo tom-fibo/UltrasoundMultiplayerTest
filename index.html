@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Ultrasound Coordinate Test</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+  <h1>Ultrasound Coordinate Transfer</h1>
+  <p class="subtitle">Tap the square to send an (x, y) point as near-ultrasonic sound.</p>
+</header>
+
+<main>
+  <div class="controls">
+    <button id="modeToggle" type="button" aria-pressed="false">Mode: Transmit</button>
+    <label class="volume-label">
+      Volume
+      <input id="volume" type="range" min="0" max="1" step="0.05" value="0.6" />
+    </label>
+  </div>
+
+  <div id="canvasWrap">
+    <canvas id="square" width="600" height="600"></canvas>
+  </div>
+
+  <div class="readout">
+    <div><strong>Last sent:</strong> <span id="sentReadout">-</span></div>
+    <div><strong>Last received:</strong> <span id="receivedReadout">-</span></div>
+    <div><strong>Live tone:</strong> <span id="liveTone">-</span></div>
+  </div>
+
+  <section class="log-section">
+    <h2>Event log</h2>
+    <ul id="log" aria-live="polite"></ul>
+  </section>
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

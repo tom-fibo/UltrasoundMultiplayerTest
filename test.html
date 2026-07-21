@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Codec Unit Tests</title>
+<style>
+  body { font-family: ui-monospace, monospace; padding: 1rem; }
+  #summary { font-size: 1.2rem; margin-bottom: 1rem; }
+  .pass { color: #1a7f37; }
+  .fail { color: #c0392b; }
+  li { margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+<h1>Codec Unit Tests</h1>
+<div id="summary">Running...</div>
+<ul id="results"></ul>
+
+<script type="module">
+  import "./test/codec.test.js";
+  import { run } from "./test/tiny-test.js";
+
+  const { passed, failed, results } = await run();
+
+  const summary = document.getElementById("summary");
+  const list = document.getElementById("results");
+
+  summary.textContent = `${passed} passed, ${failed} failed, ${results.length} total`;
+  summary.className = failed === 0 ? "pass" : "fail";
+
+  for (const r of results) {
+    const li = document.createElement("li");
+    li.className = r.ok ? "pass" : "fail";
+    li.textContent = r.ok ? `PASS - ${r.name}` : `FAIL - ${r.name}: ${r.error}`;
+    list.appendChild(li);
+  }
+
+  // Machine-readable line for automated/headless test runs (grep this).
+  console.log(`TEST_RESULT ${failed === 0 ? "PASS" : "FAIL"} passed=${passed} failed=${failed} total=${results.length}`);
+  for (const r of results) {
+    if (!r.ok) console.log(`TEST_FAIL ${r.name}: ${r.error}`);
+  }
+</script>
+</body>
+</html>
