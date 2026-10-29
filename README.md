@@ -133,3 +133,7 @@ actually running the app.
 - `js/app.js` — UI wiring (canvas, mode toggle, log)
 - `test/` — browser-based unit tests
 - `index.html`, `css/style.css` — the app shell
+
+## AI Use
+
+This is a simple vibecoded test for the ability to use ultrasound for serverless multiplayer communication. The communication function but has very low bitrate & high latency so would not actually work for a practical setting.
